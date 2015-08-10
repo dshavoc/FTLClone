@@ -1,0 +1,51 @@
+﻿Build started 7/27/2015 8:31:35 PM.
+     1>Project "D:\projects\VS10\glfwTest\glfwTest\glfwTest.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching "Release\glfwTest.unsuccessfulbuild".
+       ClCompile:
+         All outputs are up-to-date.
+       Link:
+         D:\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\projects\VS10\glfwTest\Release\glfwTest.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\glfwTest.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\projects\VS10\glfwTest\Release\glfwTest.pdb" /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\projects\VS10\glfwTest\Release\glfwTest.lib" /MACHINE:X86 Release\Interior.obj
+         Release\main.obj
+         Release\Shield.obj
+         Release\Ship.obj
+     1>Interior.obj : error LNK2001: unresolved external symbol __imp__glPopMatrix@0
+     1>Interior.obj : error LNK2001: unresolved external symbol __imp__glPushMatrix@0
+     1>Interior.obj : error LNK2001: unresolved external symbol __imp__glTranslatef@12
+     1>main.obj : error LNK2001: unresolved external symbol _glfwWindowShouldClose
+     1>main.obj : error LNK2001: unresolved external symbol __imp__glVertex2f@8
+     1>main.obj : error LNK2001: unresolved external symbol __imp__glClear@4
+     1>main.obj : error LNK2001: unresolved external symbol _glfwSetKeyCallback
+     1>main.obj : error LNK2001: unresolved external symbol _glfwInit
+     1>main.obj : error LNK2001: unresolved external symbol _glfwSwapInterval
+     1>main.obj : error LNK2001: unresolved external symbol __imp__glOrtho@48
+     1>main.obj : error LNK2001: unresolved external symbol __imp__glEnd@0
+     1>main.obj : error LNK2001: unresolved external symbol _glfwCreateWindow
+     1>main.obj : error LNK2001: unresolved external symbol _glfwMakeContextCurrent
+     1>main.obj : error LNK2001: unresolved external symbol __imp__glGetString@4
+     1>main.obj : error LNK2001: unresolved external symbol _glfwGetFramebufferSize
+     1>main.obj : error LNK2001: unresolved external symbol __imp__glBegin@4
+     1>main.obj : error LNK2001: unresolved external symbol _glfwSwapBuffers
+     1>main.obj : error LNK2001: unresolved external symbol _glfwGetTime
+     1>main.obj : error LNK2001: unresolved external symbol _glfwSetMouseButtonCallback
+     1>main.obj : error LNK2001: unresolved external symbol __imp__glMatrixMode@4
+     1>main.obj : error LNK2001: unresolved external symbol __imp__glViewport@16
+     1>main.obj : error LNK2001: unresolved external symbol _glfwPollEvents
+     1>main.obj : error LNK2001: unresolved external symbol _glfwSetWindowShouldClose
+     1>main.obj : error LNK2001: unresolved external symbol _glfwTerminate
+     1>main.obj : error LNK2001: unresolved external symbol _glfwSetErrorCallback
+     1>main.obj : error LNK2001: unresolved external symbol __imp__glColor3f@12
+     1>main.obj : error LNK2001: unresolved external symbol _glfwDestroyWindow
+     1>main.obj : error LNK2001: unresolved external symbol _glfwSetWindowTitle
+     1>main.obj : error LNK2001: unresolved external symbol __imp__glLoadIdentity@0
+     1>Shield.obj : error LNK2001: unresolved external symbol __imp__glLineWidth@4
+     1>Ship.obj : error LNK2001: unresolved external symbol __imp__glScaled@24
+     1>Ship.obj : error LNK2001: unresolved external symbol __imp__glTranslated@24
+     1>Ship.obj : error LNK2001: unresolved external symbol __imp__glRotated@32
+     1>Ship.obj : error LNK2001: unresolved external symbol __imp__glVertex3f@12
+     1>D:\projects\VS10\glfwTest\Release\glfwTest.exe : fatal error LNK1120: 34 unresolved externals
+     1>Done Building Project "D:\projects\VS10\glfwTest\glfwTest\glfwTest.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.06

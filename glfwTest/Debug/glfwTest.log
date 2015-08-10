@@ -1,0 +1,38 @@
+﻿Build started 7/27/2015 8:57:15 PM.
+     1>Project "D:\projects\VS10\glfwTest\glfwTest\glfwTest.vcxproj" on node 2 (rebuild target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\glfwTest.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         D:\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Interior.cpp main.cpp Shield.cpp Ship.cpp
+         Ship.cpp
+         Shield.cpp
+     1>d:\projects\vs10\glfwtest\glfwtest\shield.cpp(76): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>d:\projects\vs10\glfwtest\glfwtest\shield.cpp(76): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>d:\projects\vs10\glfwtest\glfwtest\shield.cpp(76): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>d:\projects\vs10\glfwtest\glfwtest\shield.cpp(91): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>d:\projects\vs10\glfwtest\glfwtest\shield.cpp(91): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>d:\projects\vs10\glfwtest\glfwtest\shield.cpp(91): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+         main.cpp
+     1>d:\projects\vs10\glfwtest\glfwtest\main.cpp(15): warning C4305: '+=' : truncation from 'double' to 'float'
+     1>d:\projects\vs10\glfwtest\glfwtest\main.cpp(17): warning C4305: '-=' : truncation from 'double' to 'float'
+     1>d:\projects\vs10\glfwtest\glfwtest\main.cpp(47): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'sprintf'
+         Interior.cpp
+         Generating Code...
+       Link:
+         D:\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\projects\VS10\glfwTest\Debug\glfwTest.exe" /NOLOGO glfw3.lib opengl32.lib glu32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\glfwTest.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\projects\VS10\glfwTest\Debug\glfwTest.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\projects\VS10\glfwTest\Debug\glfwTest.lib" /MACHINE:X86 Debug\Interior.obj
+         Debug\main.obj
+         Debug\Shield.obj
+         Debug\Ship.obj
+     1>LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+         glfwTest.vcxproj -> D:\projects\VS10\glfwTest\Debug\glfwTest.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"D:\projects\VS10\glfwTest\Debug\glfwTest.exe;#1" /manifest Debug\glfwTest.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Debug\glfwTest.unsuccessfulbuild".
+         Touching "Debug\glfwTest.lastbuildstate".
+     1>Done Building Project "D:\projects\VS10\glfwTest\glfwTest\glfwTest.vcxproj" (rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.80
