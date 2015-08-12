@@ -9,17 +9,25 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(window, GL_TRUE);
 
-	if (key == GLFW_KEY_W && action == GLFW_PRESS)
-		ship->worldY += 0.1;
-	if (key == GLFW_KEY_Q && action == GLFW_PRESS)
-		zoom += 0.1;
-	if (key == GLFW_KEY_Z && action == GLFW_PRESS)
-		zoom -= 0.1;
-	if (key == GLFW_KEY_C && action == GLFW_PRESS)
-		ship->shield.addCharge(0.5);
-	if (key == GLFW_KEY_H && action == GLFW_PRESS)
-		ship->shield.hit();
+	if (key == GLFW_KEY_Q && action == GLFW_PRESS)		//zoom in
+		zoom += 0.1f;
+	if (key == GLFW_KEY_Z && action == GLFW_PRESS)		//zoom out
+		zoom -= 0.1f;
 
+	if (key == GLFW_KEY_W && action == GLFW_PRESS)		//up
+		ship->worldY += 0.1;
+	if (key == GLFW_KEY_S && action == GLFW_PRESS)		//down
+		ship->worldY -= 0.1;
+	if (key == GLFW_KEY_A && action == GLFW_PRESS)		//left
+		ship->worldX -= 0.1;
+	if (key == GLFW_KEY_D && action == GLFW_PRESS)		//right
+		ship->worldX += 0.1;
+	
+
+	if (key == GLFW_KEY_C && action == GLFW_PRESS)		//charge shields
+		ship->shield.addCharge(0.5);
+	if (key == GLFW_KEY_H && action == GLFW_PRESS)		//hit shields
+		ship->shield.hit();
 }
 
 static void mouseButton_callback(GLFWwindow* window, int button, int action, int mods) {
@@ -70,7 +78,6 @@ int main(void)
 
 	ship = new Ship(0, 0, 0, 0.2);
 	zoom = 1;
-
 
     while (!glfwWindowShouldClose(window))
     {

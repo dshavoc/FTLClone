@@ -47,7 +47,14 @@ void Shield::update(double time) {
 	double t = time - timeSinceStateChange;
 	switch(state) {
 	case CHARGING:
-
+		if(t > ANIM_TIME) {
+			state = ON;
+		}
+		break;
+	case HIT:
+		if(t > ANIM_TIME) {
+			state = OFF;
+		}
 		break;
 	}
 }
@@ -70,33 +77,23 @@ void Shield::draw(double time) {
 		break;
 	
 	case CHARGING:
-		if(t <= ANIM_TIME) {
-			A = (float)lerp(t, ANIM_TIME, 0, 1);
-			glBegin(GL_LINE_LOOP);
-			glColor3f(A * 0.5, A * 0.5, A * 1.0);
-			for(i=0; i<shieldX.size(); i++) {
-				glVertex2f(shieldX[i], shieldY[i]);
-			}
-			glEnd();
+		A = (float)lerp(t, ANIM_TIME, 0, 1);
+		glBegin(GL_LINE_LOOP);
+		glColor3f(A * 0.5, A * 0.5, A * 1.0);
+		for(i=0; i<shieldX.size(); i++) {
+			glVertex2f(shieldX[i], shieldY[i]);
 		}
-		else {
-			state = ON;
-		}
+		glEnd();
 		break;
 	
 	case HIT:
-		if(t < ANIM_TIME) {
-			A = (float)lerp(t, ANIM_TIME, 1, 0);
-			glBegin(GL_LINE_LOOP);
-			glColor3f(A * 0.5, A * 0.5, A * 1.0);
-			for(i=0; i<shieldX.size(); i++) {
-				glVertex2f(shieldX[i], shieldY[i]);
-			}
-			glEnd();
+		A = (float)lerp(t, ANIM_TIME, 1, 0);
+		glBegin(GL_LINE_LOOP);
+		glColor3f(A * 0.5, A * 0.5, A * 1.0);
+		for(i=0; i<shieldX.size(); i++) {
+			glVertex2f(shieldX[i], shieldY[i]);
 		}
-		else {
-			state = OFF;
-		}
+		glEnd();
 		break;
 	}
 

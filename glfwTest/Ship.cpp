@@ -25,6 +25,7 @@ void Ship::draw(double time) {
 	
 	drawExterior();
 	shield.draw(time);
+	interior->draw();
 	
 }
 

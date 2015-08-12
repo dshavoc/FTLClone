@@ -1,5 +1,8 @@
 #include "Interior.h"
 
+const float Interior::TILE_SIZE = 0.5f;
+const float Interior::TILE_SPACING = 0.04f;
+
 Interior::Interior(interior_layout layout)
 {
 	switch(layout) {
@@ -16,14 +19,15 @@ Interior::~Interior(void)
 void Interior::layoutKestrel(void) {
 
 	int tmp[7][MAX_INTERIOR_SIZE] = {
-		{0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 1, 1, 5, 1, 0, 1, 3, 5, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{5, 5, 3, 0, 3, 1, 5, 1, 1, 1, 5, 1, 5, 1, 1, 0, 0, 0, 0, 0},
-		{5, 5, 1, 0, 1, 1, 5, 1, 3, 1, 5, 1, 5, 1, 5, 0, 0, 0, 0, 0},
-		{0, 1, 3, 5, 3, 0, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+		{ 0, 0, 0, 0, 0, 0,27,11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{ 0,25, 9,29, 9, 0, 9,11,29, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{29,29,11, 0,11, 1,21, 1,17, 1,21, 1,21, 1,17, 0, 0, 0, 0, 0},
+		{21,21, 1, 0, 1, 1,29, 9,27, 9,29, 9,21, 1,21, 0, 0, 0, 0, 0},
+		{ 0, 9,11,21,11, 0, 1, 1,21, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{ 0, 0, 0, 0, 0, 0, 9,11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{ 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 	};
+	memset(tiles, 0, sizeof(tiles));
 	memcpy(tiles, tmp, sizeof(tmp));
 
 	drawOffsetX = 0;
@@ -34,59 +38,79 @@ void Interior::draw() {
 	glPushMatrix();
 	glTranslatef(drawOffsetX, drawOffsetY, 0);
 
-
+	for(int row=0; row<MAX_INTERIOR_SIZE; row++) {
+		for(int col=0; col<MAX_INTERIOR_SIZE; col++) {
+			if(tiles[row][col].isPassable()) {
+				drawTileBg(row, col);
+			}
+			if(tiles[row][col].hasDoorNorth()) {
+				drawDoorNorth(row, col);
+			}
+			if(tiles[row][col].hasDoorWest()) {
+				drawDoorWest(row, col);
+			}
+		}
+	}
 
 	glPopMatrix();
 }
 
+void Interior::drawTileBg(int row, int col) {
+	glColor3f(0.9f, 0.9f, 0.8f);
+	Draw::square(col * (TILE_SIZE+TILE_SPACING), row * (TILE_SIZE+TILE_SPACING), TILE_SIZE, TILE_SIZE);
+}
+
+void Interior::drawDoorNorth(int row, int col) {
+
+}
+
+void Interior::drawDoorWest(int row, int col) {
+
+}
+
+
 /*
- *  InteriorTile class
+ * Door class
  */
 
-Interior::InteriorTile::InteriorTile(bool isPassable, bool isDoorNorth, bool isDoorWest) {
-	flags = 0;
-	if(isPassable)	flags |= PASSABLE_MASK;
-	if(isDoorNorth)	flags |= DOOR_NORTH_MASK;
-	if(isDoorWest)	flags |= DOOR_WEST_MASK;
+const double Interior::Door::DOOR_XITION_TIME = 0.5;		//seconds
+
+Interior::Door::Door() {
+	doorState = CLOSED;
 }
 
-Interior::InteriorTile::InteriorTile() {
-	InteriorTile(0, 0, 0);
+void Interior::Door::draw(double) {
+
 }
 
-Interior::InteriorTile::~InteriorTile(void)
-{
+void Interior::Door::open(double time) {
+	switch(doorState) {
+	case CLOSED:
+		timeSinceStateChange = time;
+		doorState = OPENING;
+		break;
+
+	case CLOSING:
+		//Reverse direction with credit for current progress
+		timeSinceStateChange = 1 - DOOR_XITION_TIME;
+		doorState = OPENING;
+	}
 }
 
-bool Interior::InteriorTile::isPassable() {
-	return flags & PASSABLE_MASK ? true: false;
+void Interior::Door::close(double time) {
+	switch(doorState) {
+	case OPEN:
+		timeSinceStateChange = time;
+		doorState = CLOSING;
+		break;
+
+	case OPENING:
+		//Reverse direction with credit for current progress
+		timeSinceStateChange = 1 - DOOR_XITION_TIME;
+		doorState = OPENING;
+	}
 }
 
-bool Interior::InteriorTile::hasDoorNorth() {
-	return flags & DOOR_NORTH_MASK ? true : false;
-}
-
-bool Interior::InteriorTile::hasDoorWest() {
-	return flags & DOOR_WEST_MASK ? true : false;
-}
-
-void Interior::InteriorTile::setPassable(bool x) {
-	if(x)
-		flags |= PASSABLE_MASK;
-	else
-		flags &= ~PASSABLE_MASK;
-}
-
-void Interior::InteriorTile::setDoorNorth(bool x) {
-	if(x)
-		flags |= DOOR_NORTH_MASK;
-	else
-		flags &= ~DOOR_NORTH_MASK; 
-}
-
-void Interior::InteriorTile::setDoorWest(bool x) {
-	if(x)
-		flags |= DOOR_WEST_MASK;
-	else
-		flags &= ~DOOR_WEST_MASK; 
+bool Interior::Door::isOpen() {
+	return false;
 }

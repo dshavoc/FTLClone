@@ -68,13 +68,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Draw.cpp" />
     <ClCompile Include="Interior.cpp" />
+    <ClCompile Include="InteriorTile.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Shield.cpp" />
     <ClCompile Include="Ship.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Draw.h" />
     <ClInclude Include="Interior.h" />
+    <ClInclude Include="InteriorTile.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Shield.h" />
     <ClInclude Include="Ship.h" />
